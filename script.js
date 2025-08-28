@@ -1,4 +1,4 @@
-// love count
+// ----------love count-------
 
 let count1 = 0;
 const favCount = document.getElementById("heart-count");
@@ -11,35 +11,19 @@ hearts.forEach(function (heart) {
   });
 });
 
+// -------------copy section----------
+const copyButtons = document.getElementsByClassName("copy-btn");
+const copyCount = document.getElementById("CopyBtn");
+let count = parseInt(copyCount.textContent) || 0;
 
-
-
-
-
-
-
-
-
-
-
-
-var copyButtons = document.getElementsByClassName("copy-btn");
-var copyCount = document.getElementById("CopyBtn");
-var count = parseInt(copyCount.textContent) || 0;
-
-for (var i = 0; i < copyButtons.length; i++) {
+for (let i = 0; i < copyButtons.length; i++) {
   copyButtons[i].addEventListener("click", function () {
-    // Find the closest card parent
-    var card = this.closest(".card");
+    const card = this.closest(".card");
     if (!card) return;
-
-    // Get the hotline number inside the card
-    var numberElem = card.getElementsByClassName("hotline-number")[0];
+    const numberElem = card.getElementsByClassName("hotline-number")[0];
     if (!numberElem) return;
 
-    var number = numberElem.textContent;
-
-    // Copy to clipboard
+    const number = numberElem.textContent;
     navigator.clipboard.writeText(number).then(function () {
       count++;
       copyCount.textContent = count;
@@ -47,5 +31,54 @@ for (var i = 0; i < copyButtons.length; i++) {
     });
   });
 }
+
+
+
+// --------------------call buuton and clear history-------------------------
+
+const coinBtn = document.getElementById("coin-btn");
+const callBtns = document.getElementsByClassName("call-btn");
+const historyBox = document.getElementById("clear-fild");
+const clearBtn = document.getElementById("clear-btn");
+for (let i = 0; i < callBtns.length; i++) {
+  callBtns[i].addEventListener("click", function () {
+    let coins = parseInt(coinBtn.textContent);
+
+    if (coins < 20) {
+      alert("Not enough coins! Need at least 20.");
+      return;
+    }
+
+    const card = this.closest(".card");
+    const serviceName = card.querySelector(".service-name").textContent;
+    const serviceNumber = card.querySelector(".hotline-number").textContent;
+
+    alert(`Calling ${serviceName} (${serviceNumber})`);
+
+    coinBtn.textContent = coins - 20;
+
+    const now = new Date().toLocaleTimeString();
+
+    const entry = document.createElement("div");
+    entry.className =
+      "flex justify-between items-center bg-white px-3 py-2 mb-2 rounded-xl shadow-sm";
+
+    entry.innerHTML = `
+      <div class="flex flex-col">
+        <p class="font-semibold text-sm text-gray-900">${serviceName}</p>
+        <p class="text-xs text-gray-500">${serviceNumber}</p>
+      </div>
+      <div class="text-xs text-gray-600">${now}</div>
+    `;
+
+    historyBox.appendChild(entry);
+  });
+}
+
+clearBtn.addEventListener("click", function () {
+  historyBox.innerHTML = "";
+});
+
+
 
 
