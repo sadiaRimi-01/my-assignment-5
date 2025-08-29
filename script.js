@@ -11,6 +11,7 @@ hearts.forEach(function (heart) {
   });
 });
 
+
 // copy section
 const copyButtons = document.getElementsByClassName("copy-btn");
 const copyCount = document.getElementById("CopyBtn");
