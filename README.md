@@ -6,8 +6,10 @@ querySelectorAll("cssSelector") selects all elements matching a CSS selector and
 
 Answer to the question no : 02-
  const div = document.createElement("div"); div.textcontent = "Bye"; document.body.appenChild(div);
+
 Answer to the question no : 03-
 Event bubbling - when an event happens on an element, it first runs the handler on that element, then moves upward through its parents.
+
 Answer to the question no : 04-
 Event delegation is attaching a single event listener to a parent element instead of multiple child elements since events bubble up the parent can catch event from its children
 it is useful because save memory and handle dynamically added element automatically
