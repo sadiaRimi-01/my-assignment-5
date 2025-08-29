@@ -1,4 +1,4 @@
-// ----------love count-------
+// love count
 
 let count1 = 0;
 const favCount = document.getElementById("heart-count");
@@ -11,7 +11,7 @@ hearts.forEach(function (heart) {
   });
 });
 
-// -------------copy section----------
+// copy section
 const copyButtons = document.getElementsByClassName("copy-btn");
 const copyCount = document.getElementById("CopyBtn");
 let count = parseInt(copyCount.textContent) || 0;
@@ -34,7 +34,7 @@ for (let i = 0; i < copyButtons.length; i++) {
 
 
 
-// --------------------call buuton and clear history-------------------------
+// call buuton and clear history
 
 const coinBtn = document.getElementById("coin-btn");
 const callBtns = document.getElementsByClassName("call-btn");
